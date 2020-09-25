@@ -55,3 +55,14 @@ class SceneFile(object):
             return pmc.system.saveAs(self.path)
 
 
+    def increment_save(self):
+        """Increments the version and saves the scene file.
+
+        If the existing version of a file already exists, it should
+        increment from the largest version number available in the folder.
+
+        Returns:
+            Path: The path to the scene file if successful
+        """
+        self.ver = self.next_avail_ver()
+        self.save()
